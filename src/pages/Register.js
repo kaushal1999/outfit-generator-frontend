@@ -12,6 +12,7 @@ import {
   Alert,
   Collapse,
 } from "@mui/material";
+import { host } from "../utils/routes";
 
 const Register = () => {
   const theme = useTheme();
@@ -28,7 +29,7 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res=await axios.post("/api/v1/auth/register", { username, email, password });
+      const res=await axios.post(`${host}/api/v1/auth/register`, { username, email, password });
       toast.success("Successfull");
       localStorage.setItem("authToken", res.data.id);
       navigate("/preferences");

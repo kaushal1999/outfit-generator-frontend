@@ -3,7 +3,7 @@ import Placeholder from "react-bootstrap/Placeholder";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useRef } from "react";
-
+import { host } from "../utils/routes";
 import {
   Box,
   Typography,
@@ -41,7 +41,7 @@ const ChatBot = () => {
       const id = localStorage.getItem("authToken");
       console.log("line 36");
 
-      const data = await axios.post("/api/v1/openai/chatbot", { text, id });
+      const data = await axios.post(`${host}/api/v1/openai/chatbot`, { text, id });
       setloader(false);
       console.log(data);
       console.log("hits");

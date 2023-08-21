@@ -12,6 +12,7 @@ import {
   Alert,
   Collapse,
 } from "@mui/material";
+import { host } from "../utils/routes";
 
 const Login = () => {
   const theme = useTheme();
@@ -27,7 +28,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("/api/v1/auth/login", { email, password });
+      const res = await axios.post(`${host}/api/v1/auth/login`, { email, password });
       // console.log(res.data.isUserPref);
       toast.success("Login Successfully");
       localStorage.setItem("authToken", res.data.id);

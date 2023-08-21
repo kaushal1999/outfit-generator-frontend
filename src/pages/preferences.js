@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 
+import { host } from "../utils/routes";
 
 
 function Preferences() {
@@ -55,7 +56,7 @@ function Preferences() {
 
       console.log( formData);
       const id=localStorage.getItem("authToken");
-      await axios.post("/api/v1/preferences",{formData,id});
+      await axios.post(`${host}/api/v1/preferences`,{formData,id});
       navigate("/chatbot");
     } catch (err) {
       console.log(err);
