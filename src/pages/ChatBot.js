@@ -135,6 +135,7 @@ const ChatBot = () => {
             </Button>
 
             <Button
+              style={{marginLeft:"10px"}}
               onClick={handleLogout}
               variant="contained"
               size="large"
