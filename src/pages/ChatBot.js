@@ -32,7 +32,7 @@ const ChatBot = () => {
   const handleLogout = () => {
     localStorage.clear();
     navigate("/");
-    location.reload();
+    window.location.reload();
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
