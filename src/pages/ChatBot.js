@@ -34,6 +34,19 @@ const ChatBot = () => {
     navigate("/");
     window.location.reload();
   };
+  const handleGeneration=async ()=>{
+    try {
+      setloader(true);
+      const last_response=messages.at(messages.length-1).message;
+      const data = await axios.post(`${host}/api/v1/openai/image`, { last_response});
+      setloader(false);
+      window.open(data.data)
+    } catch (error) {
+      //  console.log(error);
+      setloader(false);
+      setError(error.message);
+    }
+  }
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -41,9 +54,8 @@ const ChatBot = () => {
       setloader(true);
       const id = localStorage.getItem("authToken");
       console.log("line 36");
-
+  
       const data = await axios.post(`${host}/api/v1/openai/chatbot`, { text, id });
-      setloader(false);
       console.log(data);
       console.log("hits");
       let temp = [...messages];
@@ -55,6 +67,7 @@ const ChatBot = () => {
         message: data.data,
         fromSelf: false,
       });
+      setloader(false);
       setMessages(temp);
     } catch (err) {
       setloader(false);
@@ -137,6 +150,7 @@ const ChatBot = () => {
 
             <Button
               style={{marginLeft:"10px"}}
+              
               onClick={handleLogout}
               variant="contained"
               size="large"
@@ -144,7 +158,18 @@ const ChatBot = () => {
             >
               Logout
             </Button>
+            <Button
+              style={{marginLeft:"10px"}}
+              fullWidth
+              onClick={handleGeneration}
+              variant="contained"
+              size="large"
+              sx={{ color: "white", mt: 2 }}
+            >
+              Generate Image for the outfits in last response
+            </Button>
           </div>
+          
         </form>
       </Box>
     </>
