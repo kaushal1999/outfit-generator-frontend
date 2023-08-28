@@ -30,13 +30,13 @@ Node.js v18.17.0
 1. Either clone the repo or download it as a zip. If using zip, extract it in a folder and open the extracted files in a code editor like vsCode.
 
 ### Backend-side
-2. install the required packages using npm install
+2. Install the required packages using npm install
 3. In the .env file, add the openAi api key. Instructions and key for the same are given in the .env file itself.
 4. Run the server using the command npm start
 
 ### Frontend side
-6. install the required packages using npm install
-7. Run npm start
+5. Install the required packages using npm install
+6. Run npm start
 
 ## Using the App
 1) Create a new user account
